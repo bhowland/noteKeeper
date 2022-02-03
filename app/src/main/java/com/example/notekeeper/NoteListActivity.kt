@@ -3,12 +3,8 @@ package com.example.notekeeper
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.notekeeper.databinding.ActivityNoteListBinding
 import kotlinx.android.synthetic.main.content_note_list.*
 
@@ -38,7 +34,7 @@ class NoteListActivity : AppCompatActivity() {
 
         listNotes.setOnItemClickListener{parent,view, position, id ->
             val activityIntent = Intent(this, MainActivity::class.java)
-            activityIntent.putExtra(EXTRA_NOTE_POSITION, position)
+            activityIntent.putExtra(NOTE_POSITION, position)
             startActivity(activityIntent)
         }
     }
