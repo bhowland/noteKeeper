@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter
 import com.example.notekeeper.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.content_main.*
 
-class MainActivity : AppCompatActivity() {
+class NoteActivity : AppCompatActivity() {
     private var notePosition = POSITION_NOT_SET
 
     private lateinit var appBarConfiguration: AppBarConfiguration

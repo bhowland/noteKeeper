@@ -24,23 +24,12 @@ class NoteListActivity : AppCompatActivity() {
 //        setupActionBarWithNavController(navController, appBarConfiguration)
 
         binding.fab.setOnClickListener { view ->
-            val activityIntent = Intent(this,MainActivity::class.java)
-            startActivity(activityIntent)
-        }
-
-        listNotes.adapter = ArrayAdapter(this,
-            android.R.layout.simple_list_item_1,
-            DataManager.notes)
-
-        listNotes.setOnItemClickListener{parent,view, position, id ->
-            val activityIntent = Intent(this, MainActivity::class.java)
-            activityIntent.putExtra(NOTE_POSITION, position)
+            val activityIntent = Intent(this,NoteActivity::class.java)
             startActivity(activityIntent)
         }
     }
         override fun onResume() {
             super.onResume()
-            (listNotes.adapter as ArrayAdapter<NoteInfo>).notifyDataSetChanged()
         }
 
 
