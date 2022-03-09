@@ -3,25 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/bo_bo/AndroidStudioProjects/NoteKeeper/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.2351851851851852" />
-        <entry key="..\:/Users/bo_bo/AndroidStudioProjects/NoteKeeper/app/src/main/res/drawable/ic_white2_add_24.xml" value="0.3828125" />
-        <entry key="..\:/Users/bo_bo/AndroidStudioProjects/NoteKeeper/app/src/main/res/drawable/ic_white_add_24.xml" value="0.3828125" />
-        <entry key="..\:/Users/bo_bo/AndroidStudioProjects/NoteKeeper/app/src/main/res/layout/activity_main.xml" value="0.29347826086956524" />
-        <entry key="..\:/Users/bo_bo/AndroidStudioProjects/NoteKeeper/app/src/main/res/layout/activity_note_list.xml" value="0.33" />
-        <entry key="..\:/Users/bo_bo/AndroidStudioProjects/NoteKeeper/app/src/main/res/layout/content_main.xml" value="0.1707193515704154" />
-        <entry key="..\:/Users/bo_bo/AndroidStudioProjects/NoteKeeper/app/src/main/res/layout/content_note_list.xml" value="0.19479166666666667" />
-        <entry key="..\:/Users/bo_bo/AndroidStudioProjects/NoteKeeper/app/src/main/res/layout/fragment_first.xml" value="0.29347826086956524" />
-        <entry key="..\:/Users/bo_bo/AndroidStudioProjects/NoteKeeper/app/src/main/res/layout/item_note_list.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/bo_bo/AndroidStudioProjects/NoteKeeper/app/src/main/res/menu/menu_main.xml" value="0.20520833333333333" />
-        <entry key="app/src/main/res/layout/content_note_list.xml" value="0.359375" />
-        <entry key="app/src/main/res/layout/item_note_list.xml" value="0.359375" />
+        <entry key="app/src/main/res/layout/activity_items.xml" value="0.3591485507246377" />
+        <entry key="app/src/main/res/layout/app_bar_items.xml" value="0.3591485507246377" />
+        <entry key="app/src/main/res/layout/content_items.xml" value="0.3591485507246377" />
+        <entry key="app/src/main/res/layout/content_note_list.xml" value="0.3591485507246377" />
+        <entry key="app/src/main/res/layout/fragment_slideshow.xml" value="0.3591485507246377" />
+        <entry key="app/src/main/res/layout/nav_header_items.xml" value="0.3591485507246377" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
-    <output url="file://$PROJECT_DIR$/build/classes" />
-  </component>
-  <component name="ProjectType">
-    <option name="id" value="Android" />
-  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
 </project>
