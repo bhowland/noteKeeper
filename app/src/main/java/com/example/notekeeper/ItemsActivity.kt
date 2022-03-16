@@ -8,11 +8,21 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_items.*
 import kotlinx.android.synthetic.main.app_bar_items.*
 import kotlinx.android.synthetic.main.content_items.*
 
-class ItemsActivity : AppCompatActivity() {
+class ItemsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+    private val noteLayoutManager by lazy {
+        LinearLayoutManager(this)
+    }
+
+    private val noteRecyclerAdapter by lazy {
+        NoteRecyclerAdapter(this, DataManager.notes)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,13 +34,21 @@ class ItemsActivity : AppCompatActivity() {
 
         }
 
-        listItems.layoutManager = LinearLayoutManager(this)
-        listItems.adapter = NoteRecyclerAdapter(this, DataManager.notes)
+        displayNotes()
 
         val toggle = ActionBarDrawerToggle(
             this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
+
+        nav_view.setNavigationItemSelectedListener(this)
+    }
+
+    private fun displayNotes() {
+        listItems.layoutManager = noteLayoutManager
+        listItems.adapter = noteRecyclerAdapter
+
+        nav_view.menu.findItem(R.id.nav_notes).isChecked = true
     }
 
     override fun onResume() {
@@ -62,30 +80,28 @@ class ItemsActivity : AppCompatActivity() {
         }
     }
 
-//    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-//        // Handle navigation view item clicks here.
-//        when (item.itemId) {
-//            R.id.nav_camera -> {
-//                // Handle the camera action
-//            }
-//            R.id.nav_gallery -> {
-//
-//            }
-//            R.id.nav_slideshow -> {
-//
-//            }
-//            R.id.nav_manage -> {
-//
-//            }
-//            R.id.nav_share -> {
-//
-//            }
-//            R.id.nav_send -> {
-//
-//            }
-//        }
-//
-//        drawer_layout.closeDrawer(GravityCompat.START)
-//        return true
-//    }
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        // Handle navigation view item clicks here.
+        when (item.itemId) {
+            R.id.nav_notes -> {
+                displayNotes()
+            }
+            R.id.nav_courses -> {
+                handleSelection("Courses")
+            }
+            R.id.nav_share -> {
+                handleSelection("Don't you think you have shared enough")
+            }
+            R.id.nav_send -> {
+                handleSelection("Send")
+            }
+        }
+
+        drawer_layout.closeDrawer(GravityCompat.START)
+        return true
+    }
+
+    private fun handleSelection(message: String) {
+        Snackbar.make(listItems, message, Snackbar.LENGTH_LONG).show()
+    }
 }
