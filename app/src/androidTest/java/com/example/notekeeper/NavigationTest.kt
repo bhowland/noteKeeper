@@ -18,17 +18,14 @@ import org.junit.runner.RunWith
 import androidx.test.espresso.Espresso.onData
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.DrawerActions
 import androidx.test.espresso.contrib.NavigationViewActions
 import androidx.test.espresso.contrib.RecyclerViewActions
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import androidx.test.espresso.matcher.ViewMatchers.withClassName
-import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.jwhh.notekeeper.CourseRecyclerAdapter
-import org.hamcrest.Matchers.allOf
-import org.hamcrest.Matchers.anything
-import org.hamcrest.Matchers.`is`
+import org.hamcrest.Matchers.*
 
 
 @RunWith(AndroidJUnit4::class)
@@ -43,8 +40,28 @@ class NavigationTest{
 
         val coursePosition = 0
         onView(withId(R.id.listItems)).perform(
-            RecyclerViewActions.actionOnItemAtPosition<CourseRecyclerAdapter.ViewHolder>(coursePosition, click())
+            RecyclerViewActions.actionOnItemAtPosition<CourseRecyclerAdapter.ViewHolder>(
+                coursePosition,
+                click()
+            )
         )
+
+        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open())
+        onView(withId(R.id.nav_view)).perform(NavigationViewActions.navigateTo(R.id.nav_notes))
+
+        val notePosition = 0
+        onView(withId(R.id.listItems)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<NoteRecyclerAdapter.ViewHolder>(
+                coursePosition,
+                click()
+            )
+        )
+
+        val note = DataManager.notes[notePosition]
+        onView(withId(R.id.spinnerCourses)).check(matches(withSpinnerText(containsString(note.course?.title))))
+        onView(withId(R.id.textNoteTitle)).check(matches(withText(containsString(note.title))))
+        onView(withId(R.id.textNoteText)).check(matches(withText(containsString(note.text))))
+
 
     }
 }
